@@ -11,6 +11,8 @@
     height: 100vh;
     background-color: #fff;
 } */
+#map { height: 180px; }
+
 
 input{
     width: 200px;

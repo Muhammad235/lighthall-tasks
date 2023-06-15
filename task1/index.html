@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,51 +17,65 @@
             <p>Calculate the air distance between two points by  either using thier <br> longitude and latitude or location</p>
         </div>
        
-
+        <form action="" id="myForm">
         <div class="location-point">
 
             <div class="point">
                 <h2>Point A</h2>
-                <input type="number" placeholder="longitude" id="longA">
-                <input type="number" placeholder="latitude" id="latA">
+                <input type="text" placeholder="lat,lng" id="pointA" required >
 
             </div>
 
             <div class="point">
                 <h2>Point B</h2>
-                <input type="number" placeholder="longitude" id="longB">
-                <input type="number" placeholder="latitude" id="latB">
+                <input type="text" placeholder="lat,log" id="pointB" required >
+                
+                <p id="error"></p>
 
                 <div class="output">
                     <p id="distance1"></p>
-                    <button id="submit" type="submit">submit</button>
+                    <button  type="submit">submit</button>
                 </div>
             </div>        
             
         </div>
+    </form>
+    <div id="map">
 
+    </div>
         <div class="heading heading2">
             <p>Provide the location address of the two point below</p>
         </div>
 
         <div class="location-div">
-            
+            <form action="" id="submitButton">
             <div class="location">
                 <h2>Point A</h2>
-                <input type="text" placeholder="Location Address">
+                <input type="text" placeholder="Location Address" id="address1" required value="lagos">
             </div>
             <div class="location">
                 <h2>Point B</h2>
-                <input type="text" placeholder="Location Address">
+                <input type="text" placeholder="Location Address" id="address2" required value="ibadan" >
                 <div class="output">
                     <p id="distance2"></p>
-                    <button id="" type="submit">submit</button>
+                    <button type="submit">submit</button>
                 </div>
+               </form>
             </div>
+            
        
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <!-- <script>
+        let distance1 = document.getElementById("distance1");
+let distance2 = document.getElementById("distance2");
+
+let submit = document.getElementById("submitButton");
+
+submit.addEventListener("click", console.log(distance1.value))
+    </script> -->
+
+    <script src="latest.js"></script>
 </body>
 </html>
