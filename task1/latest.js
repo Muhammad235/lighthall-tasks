@@ -68,7 +68,7 @@ main()
 
 
 function address() {
- 
+  
   const apiUrl1 = `https://geocode.search.hereapi.com/v1/geocode?q=${encodeURIComponent(
     address1.value
   )}&apiKey=nVPx6P5jZSJ77ZBrOFtlic408AOmJbLtjr3PxPoTil0`;
@@ -129,6 +129,13 @@ function address() {
           outputLatA.innerHTML = latA
           outputLngA.innerHTML = lngA
 
+          const outputLatB = document.querySelector("#latB");
+          const outputLngB = document.querySelector("#lngB");
+          outputLatB.innerHTML = latB
+          outputLngB.innerHTML = lngB
+
+          let distance2 = document.getElementById("distance2");
+          distance2.innerHTML = (`Distance = ${sf_distance}km`)
 
 
           var map = L.map("map").setView([latA, lngA], 8);
@@ -140,12 +147,12 @@ function address() {
 
           L.marker([latA, lngA])
             .addTo(map)
-            .bindPopup(`Distance is ${sf_distance} km`)
+            .bindPopup(`Distance is ${sf_distance}km`)
             .openPopup();
 
           L.marker([latB, lngB])
             .addTo(map)
-            .bindPopup(`Distance is ${sf_distance} km`)
+            .bindPopup(`Distance is ${sf_distance}km`)
             .openPopup();
 
     
@@ -155,16 +162,12 @@ function address() {
         .catch((error) => {
           // Handle any errors that occurred during the fetch
           console.error("Error:", error);
-          // Refresh the current page
-// location.reload();
-
         });
     })
     .catch((error) => {
       // Handle any errors that occurred during the fetch
       console.error("error", error);
-// Refresh the current page
-// location.reload();
+
 
     }) 
 }
