@@ -51,7 +51,7 @@ function main() {
             error.innerHTML = "Please input a correct format for the latitude and longitude"
         }else{
             distance1.innerHTML = "Distance = " + sf_distance + "Km";
-    
+            error.innerHTML  = ""
             console.log(distance);
         }
 }
@@ -67,12 +67,8 @@ main()
 
 
 
-submit.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  console.log(address1.value);
-  console.log(address2.value);
-
+function address() {
+ 
   const apiUrl1 = `https://geocode.search.hereapi.com/v1/geocode?q=${encodeURIComponent(
     address1.value
   )}&apiKey=nVPx6P5jZSJ77ZBrOFtlic408AOmJbLtjr3PxPoTil0`;
@@ -80,8 +76,6 @@ submit.addEventListener("submit", (e) => {
   fetch(apiUrl1)
     .then((response) => response.json())
     .then((data) => {
-      // Process the fetched data here
-      console.log(data);
 
       let latA = data.items[0].position.lat;
       let lngA = data.items[0].position.lng;
@@ -96,22 +90,12 @@ submit.addEventListener("submit", (e) => {
       fetch(apiUrl2)
         .then((response) => response.json())
         .then((data) => {
-          // Process the fetched data here
-          console.log(data);
 
           let latB = data.items[0].position.lat;
           let lngB = data.items[0].position.lng;
 
-          console.log(latB);
-          console.log(lngB);
-
           const long_difference = lngB - lngA;
           const lat_difference = latB - latA;
-
-          console.log(long_difference);
-          console.log(lat_difference);
-
-          // Perform further calculations or operations with the obtained latitude and longitude values
 
           // Using Haversine formula
           const a =
@@ -135,7 +119,17 @@ submit.addEventListener("submit", (e) => {
 
           console.log(sf_distance);
           const mapElement = document.querySelector("#map");
-          mapElement.style.height= "300px";
+          mapElement.style.height= "450px";
+          
+          const output = document.querySelector(".output");
+          output.style.visibility = "visible";
+
+          const outputLatA = document.querySelector("#latA");
+          const outputLngA = document.querySelector("#lngA");
+          outputLatA.innerHTML = latA
+          outputLngA.innerHTML = lngA
+
+
 
           var map = L.map("map").setView([latA, lngA], 8);
 
@@ -153,19 +147,35 @@ submit.addEventListener("submit", (e) => {
             .addTo(map)
             .bindPopup(`Distance is ${sf_distance} km`)
             .openPopup();
+
+    
         })
+ 
+        
         .catch((error) => {
           // Handle any errors that occurred during the fetch
           console.error("Error:", error);
+          // Refresh the current page
+// location.reload();
+
         });
     })
     .catch((error) => {
       // Handle any errors that occurred during the fetch
       console.error("error", error);
+// Refresh the current page
+// location.reload();
 
-    })
+    }) 
+}
 
-  })
+
+submit.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  address()
+  
+})
 
 
 

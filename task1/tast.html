@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <link rel="stylesheet" href="new.css">
+  </head>
+  <body>
+    
+        <div class="container-fluid">
+            <div class="text-center">
+                <h1>Distance Calculator</h1>
+                <p>Calculate the air distance between two points by  either using thier <br> longitude and latitude or location</p>
+            </div>
+            <form action="" id="myForm">
+            <div class="row">
+               
+                    <div class="col-md-6 text-center col-sm-12">
+                        <h2>Point A</h2>
+                    <input type="text" placeholder="lat,lng" id="pointA" required class="mb-4">
+                    </div>
+                    <div class="col-md-6 text-center col-sm-12">
+                        <h2>Point B</h2>
+                        <input type="text" placeholder="lat,log" id="pointB" required class="mb-2">
+                    </div>
+                    <div class="text-center">
+                        <p id="error"></p>
+                        <p id="distance1"></p>
+                        <button  type="submit" class="mb-3">submit</button>
+                    </div>        
+            </div>
+        </form>
+        </div>
+        <div class="container-fluid mt-4">
+            <div class="text-center">
+                <p>Provide the location address of the two point below</p>
+            </div>
+            <form action="" id="submitButton">
+              <div class="row">
+                
+                    <div class="col-md-6 text-center">
+                        <h2>Point A</h2>
+                        <input type="text" placeholder="Location Address" id="address1" required class="mb-4" value="akure">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h2>Point B</h2>
+                        <input type="text" placeholder="Location Address" id="address2" required value="ibadan">
+                    </div>       
+               
+                    <div class="text-center">
+                        <button type="submit" id="">submit</button>
+                    </div>
+              </div>
+            </form>
+                <div class="output">
+                    <div>
+                     <h6>Point A</h6>
+                     <p>Lat: <span id="latA">12</span></p>
+                     <p>Lng <span id="lngA">12</span></p>
+                    </div>
+                   <div>
+                    <h6>Point B</h6>
+                    <p>Lat: <span id="latB">12</span></p>
+                    <p>Lng <span id="lngB">12</span></p>
+                   </div>
+                </div>    
+            </div>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div id="map"></div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+         <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+ crossorigin=""></script>
+
+
+    <script src="latest.js"></script>
+  </body>
+</html>
