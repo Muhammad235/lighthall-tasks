@@ -40,6 +40,7 @@
             
         </div>
     </form>
+
     <div id="map">
 
     </div>
@@ -51,11 +52,11 @@
             <form action="" id="submitButton">
             <div class="location">
                 <h2>Point A</h2>
-                <input type="text" placeholder="Location Address" id="address1" required value="lagos">
+                <input type="text" placeholder="Location Address" id="address1" required >
             </div>
             <div class="location">
                 <h2>Point B</h2>
-                <input type="text" placeholder="Location Address" id="address2" required value="ibadan" >
+                <input type="text" placeholder="Location Address" id="address2" required >
                 <div class="output">
                     <p id="distance2"></p>
                     <button type="submit">submit</button>
@@ -67,14 +68,11 @@
         </div>
     </div>
 
-    <!-- <script>
-        let distance1 = document.getElementById("distance1");
-let distance2 = document.getElementById("distance2");
 
-let submit = document.getElementById("submitButton");
-
-submit.addEventListener("click", console.log(distance1.value))
-    </script> -->
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+ crossorigin=""></script>
 
     <script src="latest.js"></script>
 </body>
