@@ -54,7 +54,7 @@
             <!-- message display -->
             <?php
 
-require 'config/conn.php';
+              require 'config/conn.php';
 
               $sql = "SELECT * FROM `task` LIMIT 3";
               $result = mysqli_query($conn, $sql);

@@ -1,6 +1,6 @@
 <?php  
 
-require 'inc/loginfun.php'; 
+require 'inc/registerfun.php'; 
 
 session_status();
 
@@ -31,12 +31,11 @@ session_status();
     }
 </style>
 <div class="wrapper">
-    <h1>Hello Again!</h1>
-    <p>Welcome back you've <br> been missed!</p>
 
+    <h1>Hello</h1>
+    <p>Nice having you here</p>
 
-    <form action="inc/loginfun.php" method="POST">
-
+    <form action="inc/registerfun.php" method="POST">
     <?php  if (isset($_SESSION['error'])) : ?>
             <div class="error">
             <p>
@@ -47,13 +46,14 @@ session_status();
             </div>
     <?php endif ?>
 
-
+      <input type="text" placeholder="Username" name="username">
       <input type="text" placeholder="Email ID" name="email">
-      <input type="password" placeholder="Password" name="password">     
+      <input type="password" placeholder="Password" name="password">
+      <input type="password" placeholder="Repeat Password" name="confirmpassword">
       <p class="recover">
         <a href="resetpassword.html">Recover Password</a>
       </p>
-      <button name="login">Log in</button>
+      <button name="register">Sign up</button>
     </form>
    
     <p class="or">
@@ -65,7 +65,7 @@ session_status();
       <i class="fab fa-facebook"></i>
     </div>
     <div class="not-member">
-      Not a member? <a href="register.php">Register Now</a>
+      Already a member? <a href="login.php">Login here</a>
     </div>
   </div>
 </body>
