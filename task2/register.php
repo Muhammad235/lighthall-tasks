@@ -2,7 +2,7 @@
 
 require 'inc/registerfun.php'; 
 
-session_status();
+session_start();
 
 ?>
 <!DOCTYPE html>

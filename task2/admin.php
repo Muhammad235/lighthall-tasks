@@ -1,3 +1,7 @@
+<?php
+require 'inc/add_task.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,21 +58,21 @@
             <!-- message display -->
             <?php
 
-              require 'config/conn.php';
+              require 'config/Database_connection.php';
 
-              $sql = "SELECT * FROM `task` LIMIT 3";
-              $result = mysqli_query($conn, $sql);
+              // $sql = "SELECT * FROM `task`";
+              // $result = mysqli_query($conn, $sql);
 
-              if ($result) {
-                while($row = mysqli_fetch_assoc($result)) {
+              // if ($result) {
+              //   while($row = mysqli_fetch_assoc($result)) {
 
-              $id = $row['id'];               
-              $name = $row['name'];               
-              $email	 = $row['email'];               
-              $subject = $row['subject'];               
-              $message = $row['message'];               
-              $status = $row['status'];               
-              $date = $row['date'];  
+              // $id = $row['id'];               
+              // $name = $row['name'];               
+              // $email	 = $row['email'];               
+              // $subject = $row['subject'];               
+              // $message = $row['message'];               
+              // $status = $row['status'];               
+              // $date = $row['date'];  
           ?>
 
 
@@ -91,8 +95,8 @@
 
             <?php
 
-            }                            
-          }
+          //   }                            
+          // }
 
           ?>
 

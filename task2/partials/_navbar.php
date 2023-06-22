@@ -1,3 +1,6 @@
+<?php  
+require 'inc/loginfun.php';
+?>
 <style>
   /* The Modal (background) */
 .modal {
@@ -37,10 +40,6 @@
   cursor: pointer;
 }
 
-/* input{
-  outline: 3px solid red;
-} */
-
 </style>
 
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -76,12 +75,20 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form action="" method="post">
-      <input type="text" placeholder="Task title"> <br><br>
-      <input type="text" placeholder="Description"> <br><br>
-      <input type="date" placeholder="Start Date"> <br><br>
-      <input type="text" placeholder="Status"> <br><br>
-      <button type="submit">Add task</button>
+    <form action="inc/add_task.php" method="post">
+      <input type="text" placeholder="Task title" name="task_title"> <br><br>
+      <textarea name="description" id="" cols="30" rows="10">Description here</textarea> <br><br>
+      <label for="">Start date</label>
+      <input type="date" placeholder="Start Date" name="start_date"> <br><br>
+      <label for="">End date</label>
+      <input type="date" placeholder="End Date" name="end_date"> <br><br>
+      <select name="status" id="">
+        <option value="in progress">In progress</option>
+        <option value="in progress">Completed</option>
+        <option value="in progress">Pending</option>
+      </select><br><br>
+      <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
+      <button type="submit" name="add_task">Add task</button>
     </form>
   </div>
 

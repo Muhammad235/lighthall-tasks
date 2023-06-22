@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (isset($_POST['login'])) {
     
     $email = $_POST['email'];
@@ -24,7 +23,9 @@ if (isset($_POST['login'])) {
 
             if ($user_data['password'] == $_POST['password']) {
 
-                echo "<script>window.location.replace('../admin.php')</script>";          
+                echo "<script>window.location.replace('../admin.php')</script>";        
+                
+                $_SESSION['user_id'] = $user_data['id'];
             }
         }else{ 
 

@@ -2,8 +2,6 @@
 
 require 'inc/loginfun.php'; 
 
-session_status();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
