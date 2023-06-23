@@ -1,6 +1,3 @@
-<?php  
-require 'inc/loginfun.php';
-?>
 <style>
   /* The Modal (background) */
 .modal {
@@ -44,8 +41,8 @@ require 'inc/loginfun.php';
 
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="index.php"><img src="images/logo.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -66,9 +63,6 @@ require 'inc/loginfun.php';
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown d-lg-flex ">
                 <button type="button" class="btn btn-info font-weight-bold" id="myBtn">+ Create New Task</button>
-                <!-- Trigger/Open The Modal -->
-<!-- <button id="myBtn">Open Modal</button> -->
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -83,9 +77,10 @@ require 'inc/loginfun.php';
       <label for="">End date</label>
       <input type="date" placeholder="End Date" name="end_date"> <br><br>
       <select name="status" id="">
-        <option value="in progress">In progress</option>
-        <option value="in progress">Completed</option>
-        <option value="in progress">Pending</option>
+      <option value="Pending">Pending</option>
+      <option value="Completed">Completed</option>
+      <option value="In progress">In progress</option>
+        
       </select><br><br>
       <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
       <button type="submit" name="add_task">Add task</button>
@@ -93,27 +88,12 @@ require 'inc/loginfun.php';
   </div>
 
 </div>
+
             </li>
            <li class="nav-item dropdown d-flex">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
               <i class="icon-air-play mx-0"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow">
-                  <h6 class="preview-subject ellipsis font-weight-normal">David Grey
-                  </h6>
-                  <p class="font-weight-light small-text text-muted mb-0">
-                    The meeting is cancelled
-                  </p>
-                </div>
-              </a>
-
-            </div>
           </li>
           <li class="nav-item dropdown d-flex mr-4 ">
             <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">

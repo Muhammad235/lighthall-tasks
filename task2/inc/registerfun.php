@@ -33,7 +33,7 @@ if (isset($_POST['register'])) {
         if ($user_object->confirm_password()) {
               
             if ($user_object->save_data()) {
-                echo "<script>window.location.replace('../admin.php')</script>";
+                echo "<script>window.location.replace('../login.php')</script>";
 
             }else{
             $_SESSION['error'] = 'Registration failed, this could be server error';
@@ -46,7 +46,7 @@ if (isset($_POST['register'])) {
     }
 
     if (isset($_SESSION['error'])) {
-        echo "<script>window.location.replace('../register.php')</script>";
+        echo "<script>window.location.replace('../index.php')</script>";
         exit();
   }
 }

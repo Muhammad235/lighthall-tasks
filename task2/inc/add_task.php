@@ -1,9 +1,20 @@
 <?php
+// Enable error reporting and display errors on the screen (optional, for debugging purposes)
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Set the error log file path
+$logFile = '../error.log';
+
+// Log errors to the specified log file
+ini_set('log_errors', 1);
+ini_set('error_log', $logFile);
+
+
 require 'loginfun.php';
 
 if (isset($_POST['add_task'])) {
     
-    print_r($_POST);
 
     $user_id = $_POST['user_id'];
     $task_title = trim($_POST['task_title']);

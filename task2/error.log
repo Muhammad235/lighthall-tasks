@@ -1,0 +1,19 @@
+[23-Jun-2023 21:47:09 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\lighthall-tasks\task2\partials\edit_status.php on line 29
+[23-Jun-2023 21:47:09 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '10'' at line 3 in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php:148
+Stack trace:
+#0 C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php(148): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\lighthall-tasks\task2\partials\edit_status.php(31): Task->update_task_status()
+#2 {main}
+  thrown in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php on line 148
+[23-Jun-2023 21:47:36 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id = '10'' at line 3 in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php:148
+Stack trace:
+#0 C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php(148): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\lighthall-tasks\task2\partials\edit_status.php(31): Task->update_task_status()
+#2 {main}
+  thrown in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php on line 148
+[23-Jun-2023 21:48:13 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 'Pending' WHERE id = '10'' at line 1 in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php:146
+Stack trace:
+#0 C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php(146): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\lighthall-tasks\task2\partials\edit_status.php(31): Task->update_task_status()
+#2 {main}
+  thrown in C:\xampp\htdocs\lighthall-tasks\task2\classes\Task.php on line 146

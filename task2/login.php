@@ -1,7 +1,7 @@
 <?php  
 
-require 'inc/loginfun.php'; 
-
+include 'inc/loginfun.php'; 
+// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,8 @@ require 'inc/loginfun.php';
    <!-- Font Awesome Cdn Link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    <link rel="stylesheet" href="css/custom.css">
-    <title>Document</title>
+   <title>Task management system</title>
+
 </head>
 <body>
 <style>

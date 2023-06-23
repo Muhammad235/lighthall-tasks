@@ -14,10 +14,17 @@ ini_set('error_log', $logFile);
 
 // session_start();
 
+// if (isset($_SESSION['user_id'])) {
+//   echo "<script>window.location.replace('admin.php')</script>";        
+  
+// }else {
+//   echo "<script>window.location.replace('login.php')</script>";        
+
+// }
 
 require __DIR__ . '/inc/add_task.php';
 require __DIR__ . '/classes/Task.php';
-
+// require 'inc/loginfun.php';
 
 //create new instance of Task class and pass in the values
 $get_task_object = new Task();
@@ -26,11 +33,16 @@ $get_task_object = new Task();
 //get user id by session
 $user_id = $_SESSION['user_id'];
 
+//get task id
+$task_id = $_GET['id'];
+
 //setting the user id
-$get_task_object->setUserId($user_id);
+$get_task_object->setId($task_id);
 
 //getting task by user id
-$task_data = $get_task_object->get_task_by_user_id();
+$task_data = $get_task_object->get_task_by_task_id();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -85,68 +97,50 @@ $task_data = $get_task_object->get_task_by_user_id();
               </p>
             </div>
           </div>
-          <div class="container message-table">
-            <div class="row message-header">
-              <div class="col-md-2">
-                <h6>Task Title</h6>
-              </div>
-              <div class="col-md-3"><h6>Description</h6></div>
-              <div class="col-md-2"><h6>Start Date</h6></div>
-              <div class="col-md-2"><h6>End date</h6></div>
-              <div class="col-md-2"><h6>Satus</h6></div>
-              <div class="col-md-1"><h6>Action</h6></div>
+          <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <form method="POST" action="inc/edit_taskfun.php">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Task Title</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="I want to code" value="<?=$task_data['task_title']?>" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Task Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"><?=$task_data['description']?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Start Date (current date: <?=$task_data['start_date']?>)</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" name="start_date" value="<?=$task_data['start_date']?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">End Date (current date: <?=$task_data['end_date']?>)</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" name="end_date" value="<?=$task_data['end_date']?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Task status</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2" name="status">
+                            <!-- <option value="" selected></option> -->
+                            <option selected class="py-3 mb-2"><?=$task_data['status']?></option>
+                            
+                            <option value="Completed" class="py-3 mb-2">Completed</option>
+                            <option value="In progress" class="py-3 mb-0">In progress</option>
+                            <option value="Pending" class="py-3 mb-2">Pending</option>
+                        </select>
+                    </div>
+
+                    <input type="hidden" name="task_id" value="<?=$task_id?>">
+
+                    <div class="row">
+                      <div class="col-md-12 text-center"><button class="btn btn-info w-50" type="submit" name="edit">Save</button></div>
+                    </div>
+     
+                 </form>
+                </div>
             </div>
-            <?php
-
-// Check if there are tasks
-if (!empty($task_data)) {
-    // Loop over the tasks and display task details
-    foreach ($task_data as $task) {
-
-    ?>
-<div class="row">
-              <div class="col-md-2 message-info mt-3">
-                <div class="box">
-                  <p><?=$task['task_title']?></p>
-                </div> 
-              </div>
-              <div class="col-md-3 mt-3">
-                <p><?=$task['description']?></p>
-              </div>
-              <div class="col-md-2 mt-3"><?=$task['start_date']?></div>
-              <div class="col-md-2 mt-2"><?=$task['end_date']?></div>
-              <div class="col-md-2 mt-2">
-
-              <form action="" method="post" class="taskForm">
-                <input type="hidden" name="taskId" value="<?=$task['id']?>">
-                <select name="status" class="statusSelect">
-                  <option value="" selected><?=$task['status']?></option>
-                  <option value="Pending">Pending</option>
-                  <option value="Completed">Completed</option>
-                  <option value="In progress">In progress</option>
-                </select>
-              </form>
-
-              </div>   
-
-              <div class="col-md-1 mt-1">
-              <a href="edit_task.php?id=<?=$task['id']?>"><i class='bx bxs-edit bx-sm'></i></a>
-              <a href="edit_task.php?id=<?=$task['id']?>"><i class='bx bxs-calendar-check text-success bx-sm'></i></a>
-              </div>
-            </div>
-  <?php  }
-} else {
-    echo '<h1 class="text-center mt-5 text-danger">No tasks found, Start adding tasks now!</h1>';
-    $task['task_title'] ="";
-    $task['description'] ="";
-    $task['start_date'] ="";
-    $task['end_date'] ="";
-    $task['status'] ="";
-
-}
-
-?>
-
           </div>
         </div>
         <!-- content-wrapper ends -->
@@ -199,6 +193,9 @@ $(document).ready(function() {
     });
   });
 });
+
+
+
 
 
 </script>

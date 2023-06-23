@@ -10,7 +10,7 @@ class User
 
 
     public function __construct(){
-        require '../config/Database_connection.php';
+        require 'Database_connection.php';
     
         $database_object = new Database_connection;
     

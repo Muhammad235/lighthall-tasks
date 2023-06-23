@@ -22,10 +22,13 @@ if (isset($_POST['login'])) {
         if (is_array($user_data) && count($user_data) > 0) {
 
             if ($user_data['password'] == $_POST['password']) {
+                
+                $_SESSION['user_id'] = $user_data['id'];
+                $_SESSION['username'] = $user_data['username'];
 
                 echo "<script>window.location.replace('../admin.php')</script>";        
                 
-                $_SESSION['user_id'] = $user_data['id'];
+
             }
         }else{ 
 
@@ -39,5 +42,8 @@ if (isset($_POST['login'])) {
         exit();
     }
  
+}else {
+    // echo "<script>window.location('../index.php')</script>";
+    // exit();
 }
 
