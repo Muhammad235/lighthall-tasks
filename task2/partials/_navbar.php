@@ -104,7 +104,7 @@
               <a class="dropdown-item preview-item">               
                   <i class="icon-head"></i> Profile
               </a>
-              <a class="dropdown-item preview-item">
+              <a class="dropdown-item preview-item" href="inc/logout.php?logout=true">
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
@@ -148,4 +148,4 @@ window.onclick = function(event) {
   }
 }
 
-    </script>
+</script>

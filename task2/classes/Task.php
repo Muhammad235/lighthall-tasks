@@ -115,24 +115,63 @@ class Task
 
 
     //get all tasks by user id
-    function get_task_by_user_id(){
-        $query = "SELECT * FROM task WHERE user_id = :user_id";
+    // function get_task_by_user_id(){
+    //     $query = "SELECT * FROM task WHERE user_id = :user_id";
 
-        $stmt = $this->connect->prepare($query);
-        $stmt->bindParam(':user_id', $this->user_id);
+    //     $stmt = $this->connect->prepare($query);
+    //     $stmt->bindParam(':user_id', $this->user_id);
 
-        try {
-            if ($stmt->execute()) {
-                $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-           }else {
-               $task_data = array();
-           } 
-        } catch (Exception $e) {
-            echo $e->getMessage();
+    //     try {
+    //         if ($stmt->execute()) {
+    //             $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //        }else {
+    //            $task_data = array();
+    //        } 
+    //     } catch (Exception $e) {
+    //         echo $e->getMessage();
+    //     }
+    //         return $task_data;
+    // }
+
+        //get all tasks by user id
+        function get_task_by_user_id(){
+            $query = "SELECT * FROM task WHERE user_id = :user_id";
+
+            $stmt = $this->connect->prepare($query);
+            $stmt->bindParam(':user_id', $this->user_id);
+    
+            try {
+                if ($stmt->execute()) {
+                    $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+               }else {
+                   $task_data = array();
+               } 
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+                return $task_data;
         }
-            return $task_data;
-    }
 
+        //get all tasks by user id
+        function get_task_by_user_filter($filter){
+            $query = "SELECT * FROM task WHERE user_id = :user_id AND status = :status";
+
+            $stmt = $this->connect->prepare($query);
+            $stmt->bindParam(':user_id', $this->user_id);
+            $stmt->bindParam(':status', $filter);
+    
+            try {
+                if ($stmt->execute()) {
+                    $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+               }else {
+                   $task_data = array();
+               } 
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+                return $task_data;
+        }
+   
 
     //update task status
     function update_task_status() {

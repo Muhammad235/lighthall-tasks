@@ -1,37 +1,8 @@
 <?php
 
-// Enable error reporting and display errors on the screen (optional, for debugging purposes)
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// Set the error log file path
-$logFile = 'error.log';
-
-// Log errors to the specified log file
-ini_set('log_errors', 1);
-ini_set('error_log', $logFile);
-
-
-// session_start();
-
 
 require __DIR__ . '/inc/add_task.php';
 require __DIR__ . '/classes/Task.php';
-
-
-
-//get user id by session
-$user_id = $_SESSION['user_id'];
-
-
-//create new instance of Task class and pass in the values
-$get_task_object = new Task();
-
-//setting the user id
-$get_task_object->setUserId($user_id);
-  
-//getting task by user id
-$task_data = $get_task_object->get_task_by_user_id();
 
 
 ?>
@@ -88,13 +59,13 @@ $task_data = $get_task_object->get_task_by_user_id();
                 ?>
               </p>
               <div class="float-right">
-                <!-- <div class="filter">
+                <div class="filter">
                   <select name="filter" id="filterSelect">
                     <option value="" selected>Filter</option>
                     <option value="Pending">Pending</option>
                     <option value="Completed">Completed</option>
                   </select>
-                </div> -->
+                </div>
               </div>
             </div>
           </div>
@@ -256,4 +227,6 @@ $(document).ready(function() {
 </body>
 
 </html>
+
+
 

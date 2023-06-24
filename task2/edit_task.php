@@ -42,8 +42,6 @@ $get_task_object->setId($task_id);
 //getting task by user id
 $task_data = $get_task_object->get_task_by_task_id();
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
