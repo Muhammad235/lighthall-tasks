@@ -36,8 +36,6 @@ if (isset($_POST['add_task'])) {
         //create new instance of Task class and pass in the values
         $new_task_object = new Task();
         
-        print_r($_POST);
-
         $new_task_object->setUserId($user_id);
         $new_task_object->setTaskTitle($task_title);
         $new_task_object->setTaskDescription($description);

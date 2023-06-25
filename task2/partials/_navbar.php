@@ -72,18 +72,22 @@
     <form action="inc/add_task.php" method="post">
       <input type="text" placeholder="Task title" name="task_title"> <br><br>
       <textarea name="description" id="" cols="30" rows="10">Description here</textarea> <br><br>
+
       <label for="">Start date</label>
       <input type="date" placeholder="Start Date" name="start_date"> <br><br>
+
       <label for="">End date</label>
       <input type="date" placeholder="End Date" name="end_date"> <br><br>
+
+      <label for="">Task status</label>
       <select name="status" id="">
       <option value="Pending">Pending</option>
       <option value="Completed">Completed</option>
       <option value="In progress">In progress</option>
-        
       </select><br><br>
+      
       <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
-      <button type="submit" name="add_task">Add task</button>
+      <button type="submit" name="add_task" class="btn btn-info">Add task</button>
     </form>
   </div>
 
