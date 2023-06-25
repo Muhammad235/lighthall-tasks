@@ -152,8 +152,10 @@ class Task
                 return $task_data;
         }
 
-        //get all tasks by user id
-        function get_task_by_user_filter($filter){
+
+        //get task by filter status
+        function get_filtered_task($filter){
+
             $query = "SELECT * FROM task WHERE user_id = :user_id AND status = :status";
 
             $stmt = $this->connect->prepare($query);
@@ -171,7 +173,7 @@ class Task
             }
                 return $task_data;
         }
-   
+
 
     //update task status
     function update_task_status() {

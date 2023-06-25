@@ -11,27 +11,43 @@ $logFile = 'error.log';
 ini_set('log_errors', 1);
 ini_set('error_log', $logFile);
 
-
 // session_start();
-
 
 require __DIR__ . '/inc/add_task.php';
 require __DIR__ . '/classes/Task.php';
 
 
-
 //get user id by session
 $user_id = $_SESSION['user_id'];
 
-
-//create new instance of Task class and pass in the values
 $get_task_object = new Task();
-
-//setting the user id
 $get_task_object->setUserId($user_id);
-  
-//getting task by user id
-$task_data = $get_task_object->get_task_by_user_id();
+
+
+if (isset($_POST['filterCompleted'])) {
+  $filter = $_POST['completed'];
+
+  //get all completed task   
+  $task_data = $get_task_object->get_filtered_task($filter);
+
+}elseif(isset($_POST['filterPending'])){
+  $filter = $_POST['pending'];
+
+  //get all pending task   
+  $task_data = $get_task_object->get_filtered_task($filter);
+
+}elseif(isset($_POST['Inprogress'])){
+  $filter = $_POST['In_progress'];
+
+  //get all In progress task   
+  $task_data = $get_task_object->get_filtered_task($filter);
+
+}else{
+
+  //get all task by user id
+  $task_data = $get_task_object->get_task_by_user_id();
+
+}
 
 
 ?>
@@ -88,13 +104,30 @@ $task_data = $get_task_object->get_task_by_user_id();
                 ?>
               </p>
               <div class="float-right">
-                <!-- <div class="filter">
-                  <select name="filter" id="filterSelect">
-                    <option value="" selected>Filter</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </div> -->
+                <div class="filter d-flex">
+                <h5 class="pt-2 px-2">sort by:</h5>
+                  <form action="" method="POST" class="">
+                    <input type="text" name="all" value="*" hidden></input>
+                    <button type="submit" name="filterAll" class="btn btn-info">All</button>
+                  </form>
+
+                  <form action="" method="POST">
+                    <input type="text" name="pending" value="Pending" hidden></input>
+                    <button type="submit" name="filterPending" class="btn btn-warning text-white">Pending</button>
+                  </form>
+
+                  <form action="" method="POST">
+                    <input type="text" name="completed" value="Completed" hidden></input>
+                    <button type="submit" name="filterCompleted" class="btn btn-success">Completed</button>
+                  </form>
+
+                  <form action="" method="POST">
+                    <input type="text" name="In_progress" value="In progress" hidden></input>
+                    <button type="submit" name="Inprogress" class="btn btn-dark">In progress</button>
+                  </form>
+                  
+                  
+                </div>
               </div>
             </div>
           </div>
@@ -212,29 +245,6 @@ $(document).ready(function() {
     });
   });
 });
-
-$(document).ready(function() {
-  $('#filterSelect').on('change', function() {
-    var selectedValue = $(this).val();
-
-    $.ajax({
-      url: 'filter.php', // Replace with your server URL
-      method: 'POST',
-      data: { filterValue: selectedValue },
-      success: function(response) {
-        console.log('AJAX request successful');
-        console.log('Response:', response);
-        // Handle the server response as needed
-      },
-      error: function(xhr, status, error) {
-        console.log('AJAX request failed');
-        console.log('Error:', error);
-        // Handle AJAX errors
-      }
-    });
-  });
-});
-
 
 
 </script>
