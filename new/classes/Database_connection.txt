@@ -1,0 +1,13 @@
+<?php
+
+class Database_connection
+{
+    function connect(){
+        $connect = new PDO("mysql:host=localhost; dbname=muhammad_taskapp", "muhammad_adeleke", "okikiola(m)");
+
+        return $connect;
+    }
+}
+
+?>
+
