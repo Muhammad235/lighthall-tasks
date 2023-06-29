@@ -7,6 +7,10 @@ session_start();
 $cuisine = $_POST['cuisine'];
 $cuisine2 = $_POST['cuisine2'];
 
+// $search_cuisine = $cuisine $cuisine2;
+
+$cuisine .= " " . $cuisine2;
+
 $location = $_POST['location'];
 $location2 = $_POST['location2'];
 
@@ -15,6 +19,8 @@ $date2 = $_POST['date2'];
 
 $time = $_POST['time'];
 $time2 = $_POST['time2'];
+
+
 
 
 if (empty($cuisine) || empty($cuisine2) || empty($location) || empty($location2) || empty($date) || empty($date2) || empty($time)  || empty($time2) ) {
@@ -73,89 +79,58 @@ if (empty($cuisine) || empty($cuisine2) || empty($location) || empty($location2)
     curl_close($curl);
 
 
-    // $curl = curl_init();
+    $curl = curl_init();
     
-    // curl_setopt_array($curl, array(
-    //   CURLOPT_URL => 'https://api.spoonacular.com/food/restaurants/search?cuisine=italian&lat=34.7786357&lng=-122.3918135&apiKey=76868d3239f84969ab0e89225d89d526',
-    //   CURLOPT_RETURNTRANSFER => true,
-    //   CURLOPT_ENCODING => '',
-    //   CURLOPT_MAXREDIRS => 10,
-    //   CURLOPT_TIMEOUT => 0,
-    //   CURLOPT_FOLLOWLOCATION => true,
-    //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //   CURLOPT_CUSTOMREQUEST => 'GET',
-    // ));
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://api.spoonacular.com/food/restaurants/search?cuisine=" . urlencode($cuisine) . "&lat=" . urlencode($latitude) . "&lng=" . urlencode($longitude) . "&apiKey=76868d3239f84969ab0e89225d89d526",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'GET',
+  ));
+  
     
-    // $response = curl_exec($curl);
+    $response = curl_exec($curl);
     
-    // curl_close($curl);
-    // echo $response;
+    curl_close($curl);
+ 
+    $data = json_decode($response, true);
 
-    // JSON data representing the list of restaurants
-    $json = '{
-      "restaurants": [
-        {
-          "name": "Restaurant A",
-          "cuisine": ["Indian", "Mexican"]
-        },
-        {
-          "name": "Restaurant B",
-          "cuisine": ["Italian", "Chinese"]
+    // Extract the restaurant information
+    $restaurants = $data['restaurants'];
 
-        },
-        {
-          "name": "Restaurant C",
-          "cuisine": ["Japanese", "Thai"]
-        },
-        {
-          "name": "Restaurant D",
-          "cuisine": ["Italian", "French"]
-        },
-        {
-          "name": "Restaurant E",
-          "cuisine": ["Mexican", "Chinese"]
-        },
-        {
-          "name": "Restaurant F",
-          "cuisine": ["Greek", "Indian"]
-        },
-        {
-          "name": "Restaurant G",
-          "cuisine": ["Italian", "American"]
-        },
-        {
-          "name": "Restaurant H",
-          "cuisine": ["Chinese", "Thai"]
-        },
-        {
-          "name": "Restaurant I",
-          "cuisine": ["Mexican", "Italian"]
-        },
-        {
-          "name": "Restaurant J",
-          "cuisine": ["Indian", "Chinese"]
-        }
-      ]
-    }';
-    
-    // Decode the JSON data into an associative array
-    $data = json_decode($json, true);
     
     // Iterate through each restaurant
-    foreach ($data['restaurants'] as $restaurant) {
-        // Check if the restaurant offers both Italian and Chinese cuisines
-        if (in_array('Italian', $restaurant['cuisine']) && in_array('Chinese', $restaurant['cuisine'])) {
-            // Echo the restaurant details
-            echo 'Restaurant: ' . $restaurant['name'] . '<br>';
-            echo 'Cuisine: ' . implode(', ', $restaurant['cuisine']) . '<br><br>';
-        }
+    foreach ($restaurants as $restaurant) {
+
+      $address = $restaurant['address'];
+      $offersFirstPartyDelivery = $restaurant['offers_first_party_delivery'];
+      $cuisines = $restaurant['cuisines'];
+      $miles = $restaurant['miles'];
+      $name = $restaurant['name'];
+      $weighted_rating_value = $restaurant['weighted_rating_value'];
+
+
+
+          //  Use the extracted information as desired
+           echo "Restaurant: $name"; echo '<br>';
+           echo "Address: " . $address['street_addr'] . ", " . $address['city'] . ", " . $address['state'] . ", " . $address['country']; echo '<br>';
+           echo "Offers First Party Delivery: " . ($offersFirstPartyDelivery ? 'Yes' : 'No'); echo '<br>';
+           echo "Cuisines: " . implode(', ', $cuisines); echo '<br>';
+           echo "Miles: $miles"; echo '<br>';
+           echo "Rating: $weighted_rating_value"; echo '<br>';
+           echo '<br>';echo '<br>';
+     
+           echo '<br>';echo '<br>'; echo '<br>';echo '<br>';
+
     }
-  
-
-
 }
 
 }
+
 
 
 ?>

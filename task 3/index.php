@@ -52,7 +52,7 @@ session_start();
                 <h2 class="text-center">Person 1</h2>
                     <div class="col-md-4">
                       <label for="validationCustom01" class="form-label">Cuisine</label>
-                      <input type="text" class="form-control" id="validationCustom01" name="cuisine" required id="cuisine">
+                      <input type="text" class="form-control" id="validationCustom01" name="cuisine" required id="cuisine" placeholder="pizza, italian">
                       <div class="invalid-feedback">
                         Please provide a cuisine
                       </div>
@@ -119,7 +119,7 @@ session_start();
                 <!-- <form class="row g-3 needs-validation" novalidate method="POST" id="form2"> -->
                     <div class="col-md-4">
                       <label for="validationCustom05" class="form-label">Cuisine</label>
-                      <input type="text" class="form-control" id="validationCustom05" name="cuisine2" required id="cuisine">
+                      <input type="text" class="form-control" id="validationCustom05" name="cuisine2" required id="cuisine" placeholder="Pasta, Sandwiches">
                       <div class="invalid-feedback">
                         Please provide a cuisine
                       </div>

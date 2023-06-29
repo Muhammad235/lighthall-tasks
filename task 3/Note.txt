@@ -1,0 +1,16 @@
+
+
+Disclaimer
+
+Please note that our software utilizes a third-party API (Application Programming Interface) to provide you with enhanced functionality and the best possible user experience. We have integrated this API into our software to access and retrieve data that complements our own algorithms and enhances the features we offer.
+
+It is important to understand that while we strive to provide accurate and reliable information through our software, the data obtained from the third-party API is subject to their terms of service and limitations. Therefore, we cannot guarantee the absolute accuracy, completeness, or timeliness of the information retrieved from the API.
+
+
+
+
+
+
+
+
+
